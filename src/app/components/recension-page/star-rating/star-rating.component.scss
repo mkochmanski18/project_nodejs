@@ -1,0 +1,16 @@
+.star {
+    height: 1em;
+    color: #ffc107;
+  }
+.general-star-rating{
+  position: absolute;
+  right: 16px;
+  top:15px;
+  display: inline-flex;
+  .star{
+    position: relative;
+  }
+}
+.user-star-rating{
+  position: relative;
+}

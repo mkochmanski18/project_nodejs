@@ -1,0 +1,21 @@
+<div class="list-container">
+    <div class="input-group">
+        <input type="text" class="form-control" aria-label="Wyszukiwanie" placeholder="Wprowadź autora lub nazwę książki">
+        <div class="input-group-append">
+          <button class="input-group-text btn btn-outline-secondary">Wyszukaj</button>
+        </div>
+      </div>
+    <div class="list" *ngFor="let recension of recensions">
+        <app-recension-item [recensionDetails]="recension"></app-recension-item>
+    </div>
+</div>
+<nav aria-label="Nawigacja">
+    <ul class="pagination justify-content-center">
+      <li class="page-item"><a class="page-link" href="#">Poprzednia</a></li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">Następna</a></li>
+    </ul>
+  </nav>
+  <button (click)="request()">Klik</button>

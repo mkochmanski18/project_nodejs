@@ -1,0 +1,20 @@
+
+.container-fluid{
+    height: 100%;
+    .navbar-brand{
+        margin-left: 15px;
+    }
+    .form{
+        padding:10px;
+        padding-bottom:0;
+    }
+    hr{
+        margin:0;
+        margin-bottom: 25px;
+        border: 2px solid gray;
+    }
+    .album{
+        width:100%;
+        padding:0;
+    }
+}

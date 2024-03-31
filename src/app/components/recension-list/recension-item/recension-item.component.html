@@ -1,0 +1,10 @@
+<div class="card my-3" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{recensionDetails.book.title}}</h5>
+      <p class="card-text">{{recensionDetails.shortInfo}}</p>
+      <div class="more-line">
+            <a [routerLink]="['/details', recensionDetails.id]" class="btn btn-outline-secondary btn-sm">Przeczytaj</a>
+            <p class="card-text"><small class="text-muted">Dodana 5 min temu</small></p>
+      </div>
+    </div>
+</div>

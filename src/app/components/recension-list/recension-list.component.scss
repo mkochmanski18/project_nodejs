@@ -1,0 +1,15 @@
+.list-container{
+    width:100%;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-evenly;
+    padding-top: 20px;
+    
+    
+    .list{
+        margin:1rem;
+    }
+}
+a.page-link{
+    color: #000;
+}

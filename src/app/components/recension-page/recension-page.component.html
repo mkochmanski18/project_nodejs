@@ -1,0 +1,17 @@
+<a href="../list" class="back">Powrót</a>
+<div class="card">
+    <div class="card-header">
+      <div>
+          <h5 class="card-title">Tytuł książki: {{details.book.title}} - {{details.id}}</h5>
+       <h6 class="card-title">Autor książki: {{details.book.author.name}}</h6>
+      </div>
+      <div>
+          <app-star-rating [rating]=details.rating></app-star-rating>
+      </div>
+    </div>
+    <div class="card-body">
+        <p class="card-text"><small class="text-muted">{{details.creation_date}}</small></p>
+        <p class="card-text">{{details.content}}</p>
+        
+      </div>
+</div>
