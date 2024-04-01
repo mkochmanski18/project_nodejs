@@ -13,7 +13,7 @@ export class RecensionListComponent {
   constructor(
     private recensionService: RecensionService
   ){}
-
+  activePage:number = 1;
   recensions!:RecensionDetails[];
   recensionSub!:Subscription;
 
@@ -28,10 +28,10 @@ export class RecensionListComponent {
     this.recensionSub.unsubscribe();
   }
   changePage(num:number){
-    this.recensionService.changePage(num);
+    this.activePage=num;
   }
   request(){
-    this.recensionService.fetchReviews(1,'','').subscribe(
+    this.recensionService.fetchReviews(1,this.activePage,'','').subscribe(
       result=>{console.log(result)},
       error=>{console.error(error)}
     );

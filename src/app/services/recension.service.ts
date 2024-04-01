@@ -40,7 +40,6 @@ export class RecensionService{
       }];
 
     recensionListChange = new Subject<RecensionDetails[]>;
-    activePage:number = 1;
     
     ngOnInit(){
         this.recensionListChange.next(this.recensionList);
@@ -71,16 +70,12 @@ export class RecensionService{
         return this.recensionList[index];
     }
 
-    changePage(num:number){
-      this.activePage=num;
-    }
-
     // -----------------------------------------
 
-    fetchReviews(id:number,sortOrder:string,sortColumn:string){
+    fetchReviews(id:number,page:number, sortOrder:string,sortColumn:string){
       return this.http
         .get<any>(
-          'https://booksappi.azurewebsites.net/api/Book?Page=1&PageSize=10',
+          'https://booksappi.azurewebsites.net/api/Book?Page='+page+'&PageSize=10',
           {
             headers: new HttpHeaders({ 'Access-Control-Allow-Origin': 'localhost'})
           }

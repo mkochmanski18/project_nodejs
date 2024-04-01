@@ -8,6 +8,8 @@ import { RecensionPageComponent } from './components/recension-page/recension-pa
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 import { StarRatingComponent } from './components/recension-page/star-rating/star-rating.component';
+import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
+import { LoginPageComponent } from './components/login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { StarRatingComponent } from './components/recension-page/star-rating/sta
     RecensionListComponent,
     RecensionItemComponent,
     RecensionPageComponent,
-    StarRatingComponent
+    StarRatingComponent,
+    RegistrationPageComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
