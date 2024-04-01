@@ -20,6 +20,7 @@
     "@angular/router": "^17.3.0",
     "@ng-bootstrap/ng-bootstrap": "^16.0.0",
     "@popperjs/core": "^2.11.8",
+    "@rollup/wasm-node": "^4.13.2",
     "angular-star-rating": "^7.0.0",
     "bootstrap": "^5.3.3",
     "css-star-rating": "^1.3.1",
