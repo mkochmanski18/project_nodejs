@@ -1,4 +1,4 @@
 {
     "appService.defaultWebAppToDeploy": "/subscriptions/d017028c-c591-498f-b447-93a9e02cae0f/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/reviews1",
-    "appService.deploySubpath": "dist\\recenzje_client\\browser"
+    "appService.deploySubpath": "dist/recenzje_client/browser"
 }
