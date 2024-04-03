@@ -15,29 +15,7 @@ export class RecensionService{
   constructor(private http: HttpClient) {}
 
     recensionList:RecensionDetails[]=[
-      {
-        id:"4",
-        shortInfo:"Krótki opis",
-        content:"Treść",
-        rating: 0,
-        creation_date: new Date(),
-        modyfication_date: new Date(),
-        book:{
-          id:"1",
-          title:"Tytuł",
-          author:{
-            id:1,
-            biography:"asd",
-            name:"Marian Banaś",
-            birthDate:new Date(),
-            deathDate:new Date(),
-            picturePath:''
-          },
-          release_date: new Date(),
-          species: "Horror",
-        },
-        author:"Janek"
-      }];
+      ];
 
     recensionListChange = new Subject<RecensionDetails[]>;
     

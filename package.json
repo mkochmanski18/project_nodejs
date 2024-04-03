@@ -1,13 +1,12 @@
 {
-  "name": "recenzje-client",
+  "name": "reviews1",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "e2e": "npm run install-puppeteer && ng e2e"
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {

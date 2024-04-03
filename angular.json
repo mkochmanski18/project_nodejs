@@ -24,7 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/recenzje_client",
+            "outputPath": "dist/reviews1",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
