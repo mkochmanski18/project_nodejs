@@ -16,7 +16,7 @@ export class AuthService{
             email:formData.email,
             pwd:formData.password
         }
-        return this.http.post(environment.apiUrl+'/Auth/register',{requestBody}, { withCredentials: true });
+        return this.http.post(environment.apiUrl+'/Auth/register',{requestBody});
         
     }
 
@@ -25,6 +25,6 @@ export class AuthService{
             email:loginData.email,
             password:loginData.password
         }
-        return this.http.post<User>(environment.apiUrl+'/Auth/login',{requestBody}, { withCredentials: true })
+        return this.http.post<User>(environment.apiUrl+'/Auth/login',{requestBody})
     }
 }
