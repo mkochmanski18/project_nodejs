@@ -12,8 +12,6 @@ export class RegistrationPageComponent {
   @ViewChild('f') loginForm!: NgForm;
 
   httpError:boolean = false;
-  genders = ['male', 'female'];
-
   statement!:{text:string,class:string};
 
   constructor(
@@ -22,7 +20,7 @@ export class RegistrationPageComponent {
 
 
   onSubmit(form: NgForm){
-    this.authService.login(form.value)
+    this.authService.register(form.value)
     .subscribe({
       next:(res)=>{
         console.log(res)

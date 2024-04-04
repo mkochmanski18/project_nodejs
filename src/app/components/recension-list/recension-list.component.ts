@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { RecensionDetails } from '../../shared/interfaces/recension.interface';
 import { Subscription } from 'rxjs';
 import { RecensionService } from '../../services/recension.service';
+import { BookService } from '../../services/book.service';
+import { Book } from '../../shared/interfaces/book.interface';
 
 @Component({
   selector: 'app-recension-list',
@@ -11,29 +13,41 @@ import { RecensionService } from '../../services/recension.service';
 export class RecensionListComponent {
   
   constructor(
-    private recensionService: RecensionService
+    private recensionService: RecensionService,
+    private bookService: BookService
   ){}
+  error!:string;
   activePage:number = 1;
-  recensions!:RecensionDetails[];
-  recensionSub!:Subscription;
+  books!:Book[];
+  //recensionSub!:Subscription;
 
   ngOnInit(){
-    this.recensions = this.recensionService.recensionList;
-    this.recensionSub = this.recensionService.recensionListChange.subscribe(
-      newValues=>this.recensions=newValues
-    );
+    
+    this.request()
+    // this.recensionSub = this.recensionService.recensionListChange.subscribe(
+    //   newValues=>this.recensions=newValues
+    // );
     
   }
-  ngOnDestroy(){
-    this.recensionSub.unsubscribe();
-  }
+
   changePage(num:number){
     this.activePage=num;
+    this.request();
   }
   request(){
-    this.recensionService.fetchReviews(1,this.activePage,'','').subscribe(
-      result=>{console.log(result)},
-      error=>{console.error(error)}
+    this.bookService.getBooks(this.activePage,2).subscribe(
+      {
+        next:(res)=>{
+          let object = Object.entries(res);
+          let array = object[0][1];
+          
+          this.books = array;
+          console.log([...array])
+        },
+        error:err=>{
+          this.error = err.error.message;
+        }
+      }
     );
   }
 }

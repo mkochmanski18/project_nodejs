@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { RecensionDetails } from '../../../shared/interfaces/recension.interface';
+import { Book } from '../../../shared/interfaces/book.interface';
+import { environment } from '../../../../../environment';
 
 @Component({
   selector: 'app-recension-item',
@@ -8,6 +9,10 @@ import { RecensionDetails } from '../../../shared/interfaces/recension.interface
 })
 export class RecensionItemComponent {
 
-  @Input() recensionDetails!:RecensionDetails;
-
+  @Input() bookDetails!:Book;
+  pictureUrl!:string;
+  ngOnInit(){
+    console.log(this.bookDetails)
+    this.pictureUrl=environment.imageUrl+this.bookDetails.picturePath;
+  }
 }

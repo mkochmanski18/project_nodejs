@@ -26,7 +26,8 @@ import { LoginPageComponent } from './components/login-page/login-page.component
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

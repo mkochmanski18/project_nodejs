@@ -5,8 +5,8 @@
           <button class="input-group-text btn btn-outline-secondary">Wyszukaj</button>
         </div>
       </div>
-    <div class="list" *ngFor="let recension of recensions">
-        <app-recension-item [recensionDetails]="recension"></app-recension-item>
+    <div class="list" *ngFor="let book of books">
+        <app-recension-item [bookDetails]="book"></app-recension-item>
     </div>
 </div>
 <nav aria-label="Nawigacja">

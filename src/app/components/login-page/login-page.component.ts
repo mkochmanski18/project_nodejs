@@ -3,6 +3,7 @@ import { User } from '../../shared/interfaces/user.interface';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { CookieProviderService } from '../../services/cookieProvider.service';
 
 @Component({
   selector: 'app-login-page',
@@ -18,7 +19,8 @@ export class LoginPageComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private cookieService: CookieProviderService
   ){}
   
   ngOnInit(){  
@@ -29,11 +31,13 @@ export class LoginPageComponent {
     .subscribe({
       next:(res)=>{
         console.log(res)
-        this.router.navigate(['/list'],{relativeTo:this.route})
+        this.cookieService.setCookie("accessrev-token",res.accessToken,24);
+        this.cookieService.setCookie("refreshrev-token",res.refreshToken,24)
+        this.router.navigate(['../'],{relativeTo:this.route})
       },
       error:err=>{
-        if(err.status===401||err.status===406) this.error = err.error.message;
-        else this.error = 'Wystąpił nieznany błąd!';
+        if(err.status===400) this.error = err.error.message;
+        else this.error = 'Błędne dane logowania!';
       }
     });
   }

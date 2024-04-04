@@ -2,8 +2,9 @@
 <div class="card">
     <div class="card-header">
       <div>
-          <h5 class="card-title">Tytuł książki: </h5>
-       <h6 class="card-title">Autor książki: </h6>
+          <h5 class="card-title d-inline">{{details.title}}</h5>
+          <small class="text-muted d-inline p-2">{{details.genreName}}</small>
+          <h6 class="card-title">{{details.authorName}}</h6>
       </div>
       <div>
           <!-- <app-star-rating [rating]=details.rating></app-star-rating> -->
@@ -12,6 +13,9 @@
     <div class="card-body">
         <p class="card-text"><small class="text-muted"></small></p>
         <p class="card-text"></p>
-        
+        <div class="image">
+          <img [src]="pictureUrl">
+        </div>
+        {{details.description}}
       </div>
 </div>

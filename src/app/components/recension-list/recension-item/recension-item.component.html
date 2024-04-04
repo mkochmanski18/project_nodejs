@@ -1,10 +1,16 @@
 <div class="card my-3" style="width: 18rem;">
     <div class="card-body">
-      <h5 class="card-title"></h5>
-      <p class="card-text"></p>
+      
+      <span class="card-text">
+        <h5 class="card-title d-inline p-2">{{bookDetails.title}}</h5>
+        <small class="text-muted d-inline p-2">{{bookDetails.genreName}}</small>
+      </span>
+      <h6 class="card-text p-2">{{bookDetails.authorName}}</h6>
+      <div class="image">
+        <img [src]="pictureUrl">
+      </div>
       <div class="more-line">
-            <a [routerLink]="['/details', recensionDetails.id]" class="btn btn-outline-secondary btn-sm">Przeczytaj</a>
-            <p class="card-text"><small class="text-muted">Dodana 5 min temu</small></p>
+            <a [routerLink]="['/details', bookDetails.id]" class="btn btn-outline-secondary btn-sm">Zobacz</a>
       </div>
     </div>
 </div>

@@ -2,11 +2,11 @@ import { Author } from "./author.interface";
 
 export interface Book{
     id:string,
-    title:string,
+    title?:string,
     description?:string,
-    authorId:number,
+    authorId?:number,
     authorName?:string,
-    genreId:number,
+    genreId?:number,
     genreName?: string,
     picturePath?:string
 }

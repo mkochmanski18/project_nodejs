@@ -8,6 +8,7 @@ import {
   HttpEventType
 } from '@angular/common/http';
 import { map, catchError, tap } from 'rxjs/operators';
+import { environment } from "../../../environment";
 
 @Injectable({providedIn:'root'})
 export class RecensionService{
@@ -22,6 +23,10 @@ export class RecensionService{
     ngOnInit(){
         this.recensionListChange.next(this.recensionList);
     }
+
+    getTopReviews(){
+      return this.http.get(environment.apiUrl+'api/Review/top');
+  }
 
     addNewRecension(newSet:RecensionDetails){
         try{
