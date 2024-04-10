@@ -1,0 +1,18 @@
+<h2>Lista książek</h2>
+<div class="card card-ext">
+    <div class="list">
+        <div class="items" *ngFor="let bookDetails of books,index as inx">
+            <app-book-item [book]="bookDetails" [index]="inx"></app-book-item>
+        </div>
+    </div>
+    <hr>
+    <div class="card card-int">
+        <div class="content">
+            <div class="text">
+                <input type="text" placeholder="Nazwa książki" [(ngModel)]="newname" #ctrl="ngModel"/>
+            </div>
+            <div><button class="btn btn-success btn-sm" (click)="createNewBook()">Dodaj</button></div>
+        </div>
+    </div>
+</div>
+<div class="alert alert-danger" *ngIf="error">{{error}}</div>

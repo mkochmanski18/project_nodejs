@@ -1,7 +1,5 @@
-import { Author } from "./author.interface";
-
 export interface Book{
-    id:string,
+    id:number,
     title?:string,
     description?:string,
     authorId?:number,
@@ -9,4 +7,13 @@ export interface Book{
     genreId?:number,
     genreName?: string,
     picturePath?:string
+}
+
+export interface BookList{
+    items:Book[],
+    page:number,
+    pageSize:number,
+    totalCount:number,
+    hasNextPage:boolean,
+    hasPreviousPage:boolean,
 }

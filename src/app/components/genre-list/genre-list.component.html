@@ -1,0 +1,18 @@
+<h2>Lista gatunków</h2>
+<div class="card card-ext">
+    <div class="list">
+        <div class="items" *ngFor="let genreDetails of genres,index as inx">
+            <app-genre-item [genre]="genreDetails" [index]="inx"></app-genre-item>
+        </div>
+    </div>
+    <hr>
+    <div class="card card-int">
+        <div class="content">
+            <div class="text">
+                <input type="text" placeholder="Nazwa gatunku" [(ngModel)]="newname" #ctrl="ngModel"/>
+            </div>
+            <div><button class="btn btn-success btn-sm" (click)="createNewGenre()">Dodaj</button></div>
+        </div>
+    </div>
+</div>
+<div class="alert alert-danger" *ngIf="error">{{error}}</div>

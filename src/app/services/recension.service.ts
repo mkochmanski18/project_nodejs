@@ -15,10 +15,9 @@ export class RecensionService{
     
   constructor(private http: HttpClient) {}
 
-    recensionList:RecensionDetails[]=[
-      ];
+    recensionList:RecensionDetails[]=[];
 
-    recensionListChange = new Subject<RecensionDetails[]>;
+    recensionListChange = new Subject<RecensionDetails[]>();
     
     ngOnInit(){
         this.recensionListChange.next(this.recensionList);

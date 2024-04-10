@@ -4,12 +4,18 @@ import { RecensionListComponent } from './components/recension-list/recension-li
 import { RecensionPageComponent } from './components/recension-page/recension-page.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
+import { GenreListComponent } from './components/genre-list/genre-list.component';
+import { AuthorListComponent } from './components/author-list/author-list.component';
+import { BookListComponent } from './components/book-list/book-list.component';
 
 const routes: Routes = [
     {path:'',component:RecensionListComponent},
     {path:'sign-in',component:LoginPageComponent},
     {path:'sign-on',component:RegistrationPageComponent},
     {path:'details/:id',component:RecensionPageComponent},
+    {path:'genres',component:GenreListComponent},
+    {path:'authors',component:AuthorListComponent},
+    {path:'books',component:BookListComponent},
     {path:'*',component:RecensionPageComponent}
 ];
 

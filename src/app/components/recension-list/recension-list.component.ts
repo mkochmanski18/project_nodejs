@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { RecensionDetails } from '../../shared/interfaces/recension.interface';
-import { Subscription } from 'rxjs';
 import { RecensionService } from '../../services/recension.service';
 import { BookService } from '../../services/book.service';
 import { Book } from '../../shared/interfaces/book.interface';
@@ -18,31 +16,26 @@ export class RecensionListComponent {
   ){}
   error!:string;
   activePage:number = 1;
+  pageSize:number = 2;
   books!:Book[];
-  //recensionSub!:Subscription;
 
   ngOnInit(){
-    
     this.request()
-    // this.recensionSub = this.recensionService.recensionListChange.subscribe(
-    //   newValues=>this.recensions=newValues
-    // );
-    
   }
 
   changePage(num:number){
     this.activePage=num;
     this.request();
   }
+  changePageSize(){
+    this.request();
+  }
   request(){
-    this.bookService.getBooks(this.activePage,2).subscribe(
+    this.bookService.getBooks(this.activePage,this.pageSize).subscribe(
       {
         next:(res)=>{
-          let object = Object.entries(res);
-          let array = object[0][1];
           
-          this.books = array;
-          console.log([...array])
+          this.books = res.items;
         },
         error:err=>{
           this.error = err.error.message;

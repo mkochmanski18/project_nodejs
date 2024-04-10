@@ -67,8 +67,8 @@
                   routerLink="/registration">Dołącz do nas</a>!
               </span>
       </form>
-      <div *ngIf="httpError" class="http-error alert alert-danger">
-          Niepoprawne dane logowania!
+      <div *ngIf="error" class="http-error alert alert-danger">
+          {{error}}
       </div>
   </div>
 </div>

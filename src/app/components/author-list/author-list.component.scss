@@ -1,0 +1,40 @@
+h2{
+    text-align: center;
+    margin: 20px;
+}
+.alert{
+    width: 650px;
+    margin: 10px auto;
+}
+.card-ext{
+    width: 650px;
+    margin: 0 auto;
+    padding: 10px 0;
+    hr{
+        width: 650px;
+        margin: 10px auto;
+    }
+    .card-int{
+        width: 600px;
+        margin: 5px auto;
+        .content{
+            width:100%;
+            display:flex;
+            justify-content: space-between;
+            div{
+                width: fit-content;
+                
+            }
+            .text{
+                flex-grow: 1;
+                input{
+                    width: 100%;
+                }
+            }
+            
+        }
+        button{
+            width:600px;
+        }    
+    }
+}

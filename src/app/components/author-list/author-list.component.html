@@ -1,0 +1,24 @@
+<h2>Lista autorów</h2>
+<div class="card card-ext">
+    <div class="list">
+        <div class="items" *ngFor="let authorDetails of authors,index as inx">
+            <app-author-item [author]="authorDetails" [index]="inx"></app-author-item>
+        </div>
+    </div>
+    <hr>
+    <div class="card card-int">
+        <div class="content">
+            <div class="text">
+                <input class="form-control" type="text" placeholder="Imię i nazwisko" [(ngModel)]="newname" #ctrl="ngModel"/>
+                <label class="form-label" for="dateBirth">Data urodzenia</label>
+                <input class="form-control" type="date" name="dateBirth" placeholder="Data urodzenia" [(ngModel)]="dateBirth" #ctrl="ngModel"/>
+                <label class="form-label" for="dateDeath">Data śmierci</label>
+                <input class="form-control" type="date" name="dateDeath" placeholder="Data śmierci" [(ngModel)]="dateDeath" #ctrl="ngModel"/>
+                
+            </div>
+            <textarea class="form-control p-2" name="biography" placeholder="Biografia" [(ngModel)]="biography" #ctrl="ngModel"></textarea>
+        </div>
+        <div><button class="btn btn-success btn-sm" (click)="createNewAuthor()">Dodaj</button></div>
+    </div>
+</div>
+<div class="alert alert-danger" *ngIf="error">{{error}}</div>

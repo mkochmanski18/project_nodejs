@@ -1,9 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { User } from '../../shared/interfaces/user.interface';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { CookieProviderService } from '../../services/cookieProvider.service';
 
 @Component({
   selector: 'app-login-page',
@@ -13,32 +11,33 @@ import { CookieProviderService } from '../../services/cookieProvider.service';
 export class LoginPageComponent {
   @ViewChild('f') loginForm!: NgForm;
 
-  httpError:boolean = false;
   error!:string;
 
   constructor(
     private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute,
-    private cookieService: CookieProviderService
+    private route: ActivatedRoute
   ){}
   
   ngOnInit(){  
   }
 
   onSubmit(form: NgForm){
-    this.authService.login(form.value)
-    .subscribe({
+    this.authService.login(form.value).subscribe({
       next:(res)=>{
-        console.log(res)
-        this.cookieService.setCookie("accessrev-token",res.accessToken,24);
-        this.cookieService.setCookie("refreshrev-token",res.refreshToken,24)
-        this.router.navigate(['../'],{relativeTo:this.route})
+        localStorage.setItem("accessrev",res.accessToken);
+        localStorage.setItem("refreshrev",res.refreshToken);
+        this.authService.setLoggedStatus(true);
+        this.router.navigate(['']);
       },
-      error:err=>{
-        if(err.status===400) this.error = err.error.message;
-        else this.error = 'Błędne dane logowania!';
+      error:(err)=>{
+        this.authService.setLoggedStatus(false);
+        if(err.status === 400){
+          this.error = 'Błędne dane logowania!';
+        }
+        else this.error = 'Nieznany błąd serwera!';
       }
     });
+    
   }
 }

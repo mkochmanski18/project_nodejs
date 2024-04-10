@@ -10,6 +10,12 @@ import { HttpClientModule } from "@angular/common/http";
 import { StarRatingComponent } from './components/recension-page/star-rating/star-rating.component';
 import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
+import { GenreListComponent } from './components/genre-list/genre-list.component';
+import { BookListComponent } from './components/book-list/book-list.component';
+import { AuthorListComponent } from './components/author-list/author-list.component';
+import { GenreItemComponent } from './components/genre-list/genre-item/genre-item.component';
+import { AuthorItemComponent } from './components/author-list/author-item/author-item.component';
+import { BookItemComponent } from './components/book-list/book-item/book-item.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +25,13 @@ import { LoginPageComponent } from './components/login-page/login-page.component
     RecensionPageComponent,
     StarRatingComponent,
     RegistrationPageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    GenreListComponent,
+    BookListComponent,
+    AuthorListComponent,
+    GenreItemComponent,
+    AuthorItemComponent,
+    BookItemComponent
   ],
   imports: [
     BrowserModule,
