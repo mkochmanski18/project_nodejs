@@ -1,0 +1,15 @@
+<div class="card-body">
+    <h6>{{review.userName}}  {{review.title}}</h6>
+    <div class="content">
+        <span class="small">{{review.isPositive?"Pozytywna":"Negatywna"}}</span>
+        <button type="button" class="btn position-relative" (click)="like()">
+            <img src="../../../../assets/images/like.png" alt="like button">
+            <span class="position-absolute translate-middle badge rounded-pill bg-danger">
+                {{review.plusCount}}
+              <span class="visually-hidden">likes</span>
+            </span>
+          </button>
+        
+    </div>
+    
+</div>

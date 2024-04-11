@@ -13,8 +13,10 @@ import { environment } from '../../../../environment';
 })
 export class RecensionPageComponent {
   details!:Book;
+  reviews!:RecensionDetails[];
   pictureUrl!:string;
   error!: string;
+  revError!:string;
   constructor(
     private route: ActivatedRoute,
     private recensionService: RecensionService,
@@ -30,6 +32,14 @@ export class RecensionPageComponent {
           {
             next:(res)=>{
              this.details = res;
+             this.recensionService.getReviews(res.id).subscribe({
+              next:data=>{
+                this.reviews=data.items
+              },
+              error:er=>{
+                this.revError = "Nie udało się pobrać recenzji";
+              }
+             })
             },
             error:err=>{
               this.error = err.error.message;

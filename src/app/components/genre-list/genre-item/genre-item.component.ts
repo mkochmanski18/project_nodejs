@@ -10,12 +10,23 @@ import { BookService } from '../../../services/book.service';
 export class GenreItemComponent {
   @Input() genre!:Genre;
   @Input() index!:number;
-  
+  error!:string;
   constructor(
     private bookService: BookService
   ){}
   
   deleteGenre(id:number){
-    this.bookService.deleteGenre(id);
+    this.bookService.deleteGenre(id).subscribe({
+      next:()=>{
+          this.bookService.getGenres().subscribe({
+            next:res=>{
+              this.bookService.genreListChange.next(res.items);
+            }
+          })
+      },
+      error:()=>{
+        this.error = "Nie udało się usunąć gatunku"
+      }
+  });
   }
 }

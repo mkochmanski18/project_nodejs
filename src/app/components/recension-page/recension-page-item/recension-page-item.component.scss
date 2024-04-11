@@ -1,0 +1,18 @@
+.card-body{
+    border-bottom: solid 1px gray;
+    .content{
+        display: flex;
+        justify-content: space-between;
+        button{
+            width: 60px;
+            .badge{
+                top: 50px;
+                right: 20px;
+            }
+        }
+        button:focus,button:hover,button:active{
+            outline: none;
+            border: none;
+        }
+    }
+}

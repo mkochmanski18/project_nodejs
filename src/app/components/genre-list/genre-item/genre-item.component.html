@@ -4,4 +4,5 @@
         <div class="text">{{genre.name}}</div>
         <div><button class="btn btn-danger btn-sm" (click)="deleteGenre(genre.id)">Usuń</button></div>
     </div>
+    <div class="alert alert-danger" *ngIf="error">{{error}}</div>
 </div>

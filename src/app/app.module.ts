@@ -16,6 +16,7 @@ import { AuthorListComponent } from './components/author-list/author-list.compon
 import { GenreItemComponent } from './components/genre-list/genre-item/genre-item.component';
 import { AuthorItemComponent } from './components/author-list/author-item/author-item.component';
 import { BookItemComponent } from './components/book-list/book-item/book-item.component';
+import { RecensionPageItemComponent } from './components/recension-page/recension-page-item/recension-page-item.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { BookItemComponent } from './components/book-list/book-item/book-item.co
     AuthorListComponent,
     GenreItemComponent,
     AuthorItemComponent,
-    BookItemComponent
+    BookItemComponent,
+    RecensionPageItemComponent
   ],
   imports: [
     BrowserModule,

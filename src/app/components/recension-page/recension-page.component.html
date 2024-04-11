@@ -1,10 +1,10 @@
-<a href="../list" class="back">Powrót</a>
+<a href="../" class="back">Powrót</a>
 <div class="card">
     <div class="card-header">
       <div>
           <h5 class="card-title d-inline">{{details.title}}</h5>
-          <small class="text-muted d-inline p-2">{{details.genreName}}</small>
-          <h6 class="card-title">{{details.authorName}}</h6>
+          <small class="text-muted d-inline p-2">{{details.authorName}}</small>
+          <h6 class="card-title">{{details.genreName}}</h6>
       </div>
       <div>
           <!-- <app-star-rating [rating]=details.rating></app-star-rating> -->
@@ -18,4 +18,11 @@
         </div>
         {{details.description}}
       </div>
+</div>
+<div class="card review">
+  <div class="card-header">Recenzje</div>
+  <div class="card-body" *ngFor="let review of reviews">
+      <app-recension-page-item [review]="review"></app-recension-page-item>
+  </div>
+  <div *ngIf="reviews.length===0" class="alert alert-warning">Brak recenzji</div>
 </div>

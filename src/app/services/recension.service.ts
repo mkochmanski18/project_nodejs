@@ -1,13 +1,12 @@
 import { Injectable } from "@angular/core";
-import { RecensionDetails } from "../shared/interfaces/recension.interface";
-import { Subject, throwError } from "rxjs";
+import { RecensionDetails, RecensionList } from "../shared/interfaces/recension.interface";
+import { Subject } from "rxjs";
 import {
   HttpClient,
   HttpHeaders,
   HttpParams,
   HttpEventType
 } from '@angular/common/http';
-import { map, catchError, tap } from 'rxjs/operators';
 import { environment } from "../../../environment";
 
 @Injectable({providedIn:'root'})
@@ -20,47 +19,13 @@ export class RecensionService{
     recensionListChange = new Subject<RecensionDetails[]>();
     
     ngOnInit(){
-        this.recensionListChange.next(this.recensionList);
+       
     }
 
-    getTopReviews(){
-      return this.http.get(environment.apiUrl+'api/Review/top');
-  }
-
-    addNewRecension(newSet:RecensionDetails){
-        try{
-            this.recensionList.push(newSet);
-            this.recensionListChange.next(this.recensionList);
-            return 1
-        }
-        catch{
-            return -1
-        }
-    }
-     
-    deleteRecension(set:RecensionDetails){
-        try{
-            const index = this.recensionList.findIndex(object=>object.id===set.id);
-            delete this.recensionList[index];
-            return 1;
-        }
-        catch{return -1}
-    }
-
-    getRecension(id:string){
-        const index = this.recensionList.findIndex(object=>object.id===id);
-        return this.recensionList[index];
-    }
-
-    // -----------------------------------------
-
-    fetchReviews(id:number,page:number, sortOrder:string,sortColumn:string){
-      return this.http
-        .get<any>(
-          'https://booksappi.azurewebsites.net/api/Book?Page='+page+'&PageSize=10',
-          {
-            headers: new HttpHeaders({ 'Access-Control-Allow-Origin': 'localhost'})
-          }
-        );
-    }
+   getReviews(id:number){
+    return this.http.get<RecensionList>(environment.apiUrl+'api/Review/book/'+id);
+   }
+   reviewPlus(id:number){
+    return this.http.post(environment.apiUrl+'/api/Review/book/'+id,{});
+   }
 }

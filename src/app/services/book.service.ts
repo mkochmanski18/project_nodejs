@@ -77,11 +77,7 @@ export class BookService{
             headers: new HttpHeaders({
                 Authorization: 'Bearer '+localStorage.getItem("accessrev") })
         };
-        return this.http.delete(environment.apiUrl+'api/Genre/'+id,httpOptions).subscribe({
-            next:()=>{
-                this.getGenres();
-            }
-        });
+        return this.http.delete(environment.apiUrl+'api/Genre/'+id,httpOptions);
     }
     editGenre(items:Genre[]){
         this.genreList = items;
