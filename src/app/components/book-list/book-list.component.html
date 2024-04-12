@@ -9,9 +9,28 @@
     <div class="card card-int">
         <div class="content">
             <div class="text">
-                <input type="text" placeholder="Nazwa książki" [(ngModel)]="newname" #ctrl="ngModel"/>
+                <div>
+                    <label for="title">Tytuł: </label>
+                    <input type="text" name="title" class="form-control" [(ngModel)]="title" #ctrl="ngModel"/>
+                </div>
+                <div>
+                    <label for="description">Opis: </label>
+                    <textarea class="form-control p-2 area-description" name="description" [(ngModel)]="description" #ctrl="ngModel"></textarea></div>
+                <div>
+                    <label for="author">Autor: </label>
+                    <select class="form-control" name="author" id="author" [(ngModel)]="author">
+                        <option *ngFor="let auth of authors" [value]="auth.id">{{auth.name}}</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="genre">Gatunek: </label>
+                    <select class="form-control" name="genre" id="genre" [(ngModel)]="genre">
+                        <option *ngFor="let gen of genres" [value]="gen.id">{{gen.name}}</option>
+                    </select>
+                </div>
+                <div><button class="btn btn-success" (click)="createNewBook()">Dodaj</button></div>
             </div>
-            <div><button class="btn btn-success btn-sm" (click)="createNewBook()">Dodaj</button></div>
+            
         </div>
     </div>
 </div>

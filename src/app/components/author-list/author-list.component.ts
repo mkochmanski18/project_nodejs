@@ -57,6 +57,7 @@ export class AuthorListComponent {
         },
         error:(err)=>{
           if(err.status==401){
+            this.authService.logout();
             this.authService.isLogged.next(false);
             this.router.navigate(['../sign-in'],{relativeTo:this.route});
           }

@@ -17,6 +17,7 @@ import { GenreItemComponent } from './components/genre-list/genre-item/genre-ite
 import { AuthorItemComponent } from './components/author-list/author-item/author-item.component';
 import { BookItemComponent } from './components/book-list/book-item/book-item.component';
 import { RecensionPageItemComponent } from './components/recension-page/recension-page-item/recension-page-item.component';
+import { AuthorPageComponent } from './components/author-page/author-page.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { RecensionPageItemComponent } from './components/recension-page/recensio
     GenreItemComponent,
     AuthorItemComponent,
     BookItemComponent,
-    RecensionPageItemComponent
+    RecensionPageItemComponent,
+    AuthorPageComponent
   ],
   imports: [
     BrowserModule,

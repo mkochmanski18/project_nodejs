@@ -10,6 +10,7 @@ h2{
     width: 650px;
     margin: 0 auto;
     padding: 10px 0;
+    background-color: var(--bs-light);
     hr{
         width: 650px;
         margin: 10px auto;
@@ -17,6 +18,9 @@ h2{
     .card-int{
         width: 600px;
         margin: 5px auto;
+        *{
+            margin: 5px;
+        }
         .content{
             width:100%;
             display:flex;
@@ -28,13 +32,21 @@ h2{
             .text{
                 flex-grow: 1;
                 input{
-                    width: 100%;
+                    width: 290px;
+                }
+                label{
+                    padding-left: 5px;;
                 }
             }
-            
+            .area-biography{
+                width:300px;
+                position: relative;
+                right: 10px;
+            }
         }
         button{
-            width:600px;
+            width:570px;
+            margin:15px 10px;
         }    
     }
 }

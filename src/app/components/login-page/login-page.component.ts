@@ -16,17 +16,23 @@ export class LoginPageComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute
   ){}
   
   ngOnInit(){  
   }
+
+  add_minutes = (dt:Date, minutes:number) => {
+    // Create a new Date object representing the result of adding the specified number of minutes to the provided date
+    return new Date(dt.getTime() + minutes*60000);
+}
 
   onSubmit(form: NgForm){
     this.authService.login(form.value).subscribe({
       next:(res)=>{
         localStorage.setItem("accessrev",res.accessToken);
         localStorage.setItem("refreshrev",res.refreshToken);
+        let date = this.add_minutes(new Date(), 15).toString();
+        localStorage.setItem("tokenExpires",date);
         this.authService.setLoggedStatus(true);
         this.router.navigate(['']);
       },

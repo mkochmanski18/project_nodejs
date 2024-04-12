@@ -4,6 +4,8 @@ import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Book } from '../../shared/interfaces/book.interface';
+import { Author } from '../../shared/interfaces/author.interface';
+import { Genre } from '../../shared/interfaces/genre.interface';
 
 @Component({
   selector: 'app-book-list',
@@ -13,7 +15,15 @@ import { Book } from '../../shared/interfaces/book.interface';
 export class BookListComponent {
   books!:Book[];
   booksSub!: Subscription;
-  newname:string = '';
+  authors!:Author[];
+  authorsSub!: Subscription;
+  genres!:Genre[];
+  genresSub!: Subscription;
+
+  title:string = '';
+  description:string = '';
+  author!:number;
+  genre!:number;
   error:string = '';
   constructor(
     private bookService: BookService,
@@ -28,6 +38,14 @@ export class BookListComponent {
     });
     this.books = this.bookService.bookList;
     this.getBooks();
+    this.authorsSub = this.bookService.authorListChange.subscribe(aList=>{
+      this.authors=aList;
+    });
+    this.getAuthors();
+    this.genresSub = this.bookService.genreListChange.subscribe(gList=>{
+      this.genres=gList;
+    });
+    this.getGenres();
   }
 
   ngOnDestroy(){
@@ -35,27 +53,51 @@ export class BookListComponent {
   }
 
   getBooks(){
-    const res = this.bookService.getAllBooks().subscribe({
+    this.bookService.getAllBooks().subscribe({
       next:(res)=>{
           this.bookService.setBooks(res);
       },
       error:(err)=>{
-        this.error="Błąd pobierania danych!";
+        this.error="Błąd pobierania woluminów książek!";
+      }
+  });
+  }
+  getAuthors(){
+    this.bookService.getAuthors().subscribe({
+      next:(res)=>{
+          this.bookService.setAuthors(res);
+      },
+      error:(err)=>{
+        this.error="Błąd pobierania autorów!";
+      }
+  });
+  }
+  getGenres(){
+    this.bookService.getGenres().subscribe({
+      next:(res)=>{
+          this.bookService.setGenres(res);
+      },
+      error:(err)=>{
+        this.error="Błąd pobierania gatunków!";
       }
   });
   }
   createNewBook(){
-    if(this.newname!='') {
-      this.bookService.createBook(this.newname,'',1,1).subscribe({
+    const genreId = this.genre;
+    const authorId = this.author;
+    if(this.title!='' && this.description) {
+      this.bookService.createBook(this.title,this.description,genreId,authorId).subscribe({
         next:()=>{
             this.getBooks();
-            this.newname='';
+            this.title='';
+            this.description='';
             this.error = '';
         },
         error:(err)=>{
           if(err.status==401){
-            this.authService.isLogged.next(false);
+            this.authService.logout();
             this.router.navigate(['../sign-in'],{relativeTo:this.route});
+            this.authService.isLogged.next(false);
           }
           else{
             this.error = 'Nieznany błąd serwera';

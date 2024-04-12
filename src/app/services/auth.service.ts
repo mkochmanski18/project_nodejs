@@ -7,6 +7,7 @@ import { Subject, Subscription } from "rxjs";
 @Injectable({providedIn:'root'})
 export class AuthService{
 
+    loggStatus:boolean = false;
     isLogged = new Subject<boolean>();
     constructor(
         private http: HttpClient,
@@ -26,7 +27,8 @@ export class AuthService{
     }
     //log status
     setLoggedStatus(status:boolean){
-        this.isLogged.next(status);
+        this.loggStatus = status;
+        this.isLogged.next(this.loggStatus);
     }
     login(loginData:{email:string,password:string}){
         const requestBody={
@@ -52,5 +54,11 @@ export class AuthService{
             )
         }
         this.isLogged.next(false);
+    }
+    logout(){
+        localStorage.removeItem("refreshrev");
+        localStorage.removeItem("accessrev");
+        this.setLoggedStatus(false)
+        return this.http.post(environment.apiUrl+'/api/Auth/logout',{}).subscribe();
     }
 }

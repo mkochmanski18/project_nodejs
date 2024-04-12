@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { Subscription } from 'rxjs';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class AppComponent {
   title = 'recenzje_client';
+  email:string = '';
   isLogged!:boolean;
   logSub!:Subscription;
   constructor(
@@ -17,10 +19,20 @@ export class AppComponent {
 
   ngOnInit(){
     //this.authService.useRefreshToken();
+    if(localStorage.getItem("accessrev")){
+      this.authService.setLoggedStatus(true);
+    }
     this.logSub = this.authService.isLogged.subscribe(value=>{
       this.isLogged = value;
-      console.log(this.isLogged);
+      if(this.isLogged && localStorage.getItem("accessrev")){
+        const token = localStorage.getItem("accessrev");
+        if(token){
+          const decoded:{aud:string,email:string,exp:number,iat:number,iss:string,nameid:string,nbf:string,role:string,sub:string,unique_name:string} = jwtDecode(token);
+          this.email = decoded.email;
+        }
+      }
     });
+    this.isLogged = this.authService.loggStatus;
   }
 
   ngOnDestroy(){

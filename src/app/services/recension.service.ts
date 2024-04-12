@@ -25,7 +25,10 @@ export class RecensionService{
    getReviews(id:number){
     return this.http.get<RecensionList>(environment.apiUrl+'api/Review/book/'+id);
    }
+   getReviewDetails(id:number){
+    return this.http.get<RecensionList>(environment.apiUrl+'api/Review/'+id);
+   }
    reviewPlus(id:number){
-    return this.http.post(environment.apiUrl+'/api/Review/book/'+id,{});
+    return this.http.post(environment.apiUrl+'/api/Review/'+id+'/plus',{});
    }
 }

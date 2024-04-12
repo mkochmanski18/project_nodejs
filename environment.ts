@@ -1,4 +1,4 @@
 export const environment = {
     apiUrl: "https://booksappi.azurewebsites.net/",
-    imageUrl: "https://booksappi.blob.core.windows.net/"
+    imageUrl: "https://booksappi.blob.core.windows.net/pictures/"
 }

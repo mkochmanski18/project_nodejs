@@ -1,11 +1,14 @@
-<div class="card my-3" style="width: 18rem;">
+<div class="card my-3 outercard">
     <div class="card-body">
       
       <span class="card-text">
-        <h5 class="card-title d-inline p-2">{{bookDetails.title}}</h5>
-        <small class="text-muted d-inline p-2">{{bookDetails.genreName}}</small>
+        <h3 class="card-title d-inline p-2">{{bookDetails.title}}</h3>
       </span>
-      <h6 class="card-text p-2">{{bookDetails.authorName}}</h6>
+      <h6 class="card-text p-2">
+        {{bookDetails.authorName}}
+        <small class="text-muted d-inline p-2">{{bookDetails.genreName}}</small>
+      </h6>
+      
       <div class="image">
         <img [src]="pictureUrl">
       </div>

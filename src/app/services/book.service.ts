@@ -36,21 +36,31 @@ export class BookService{
     getBookDetails(id:number){
         return this.http.get<Book>(environment.apiUrl+'api/Book/'+id, {responseType: 'json'});
     }
-    createBook(title:string,description:string,genreId:number,authorId:number){
-        let headers = new HttpHeaders({
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer '+localStorage.getItem("accessrev") });
-        return this.http.post(environment.apiUrl+'api/Book/',{id:0,title,description,genreId,authorId},{headers:headers});
+    createBook(title:string,description:string,genre:number,author:number){
+        let body = {
+            id:0,
+            title,
+            description,
+            genreId:genre,
+            authorId:author
+        }
+        console.log(body);
+        
+        const httpOptions = {
+            headers: new HttpHeaders({
+                Authorization: 'Bearer '+localStorage.getItem("accessrev") })
+        };
+        return this.http.post(environment.apiUrl+'api/Book/',body,httpOptions);
+    }
+    updateBookImage(id:number,file:FormData){
+        return this.http.post(environment.apiUrl+'/api/Book/image?Id='+id,file,{ observe: 'response'});
     }
     deleteBook(id:number){
-        let headers = new HttpHeaders({
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer '+localStorage.getItem("accessrev") });
-        return this.http.delete(environment.apiUrl+'api/Book/'+id,{headers:headers}).subscribe({
-            next:()=>{
-                this.getAllBooks();
-            }
-        });
+        const httpOptions = {
+            headers: new HttpHeaders({
+                Authorization: 'Bearer '+localStorage.getItem("accessrev") })
+        };
+        return this.http.delete(environment.apiUrl+'api/Book/'+id,httpOptions);
     }
 
     // Genre
@@ -88,6 +98,9 @@ export class BookService{
         this.authorList = list.items;
         this.authorListChange.next(this.authorList);
     }
+    updateAuthorImage(id:number,file:FormData){
+        return this.http.post(environment.apiUrl+'/api/Author/image?Id='+id,file,{ observe: 'response'});
+    }
     getAuthors(){
         return this.http.get<AuthorList>(environment.apiUrl+'api/Author/');
     }
@@ -95,16 +108,21 @@ export class BookService{
         return this.http.get<Author>(environment.apiUrl+'api/Author/'+id);
     }
     createAuthor(name:string,biography:string,dateBirth:Date,dateDeath:Date){
-        let headers = new HttpHeaders({
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer '+localStorage.getItem("accessrev") });
-        return this.http.post(environment.apiUrl+'api/Author/',{id:0,name,biography,dateBirth,dateDeath},{headers:headers});
+        const httpOptions = {
+            headers: new HttpHeaders({
+                Authorization: 'Bearer '+localStorage.getItem("accessrev") })
+        };
+        const birth = new Date(dateBirth);
+        const death = new Date(dateDeath);
+        
+        return this.http.post(environment.apiUrl+'api/Author/',{id:0,name,biography,birth,death},httpOptions);
     }
     deleteAuthor(id:number){
-        let headers = new HttpHeaders({
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer '+localStorage.getItem("accessrev") });
-        return this.http.delete(environment.apiUrl+'api/Author/'+id,{headers:headers});
+        const httpOptions = {
+            headers: new HttpHeaders({
+                Authorization: 'Bearer '+localStorage.getItem("accessrev") })
+        };
+        return this.http.delete(environment.apiUrl+'api/Author/'+id,httpOptions);
     }
     
 }

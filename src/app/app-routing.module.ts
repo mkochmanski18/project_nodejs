@@ -7,12 +7,14 @@ import { RegistrationPageComponent } from './components/registration-page/regist
 import { GenreListComponent } from './components/genre-list/genre-list.component';
 import { AuthorListComponent } from './components/author-list/author-list.component';
 import { BookListComponent } from './components/book-list/book-list.component';
+import { AuthorPageComponent } from './components/author-page/author-page.component';
 
 const routes: Routes = [
     {path:'',component:RecensionListComponent},
     {path:'sign-in',component:LoginPageComponent},
     {path:'sign-on',component:RegistrationPageComponent},
     {path:'details/:id',component:RecensionPageComponent},
+    {path:'author/:id',component:AuthorPageComponent},
     {path:'genres',component:GenreListComponent},
     {path:'authors',component:AuthorListComponent},
     {path:'books',component:BookListComponent},

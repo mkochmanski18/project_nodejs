@@ -5,14 +5,16 @@
         justify-content: space-between;
         button{
             width: 60px;
+            border:none;
             .badge{
                 top: 50px;
                 right: 20px;
             }
         }
-        button:focus,button:hover,button:active{
+        button:hover,button:active{
             outline: none;
             border: none;
+            opacity: 0.8;
         }
     }
 }

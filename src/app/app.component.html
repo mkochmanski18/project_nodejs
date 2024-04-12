@@ -10,7 +10,7 @@
       <button  class="btn btn-outline-primary me-2 my-sm-0" type="button" [routerLink]="['/authors']">Autorzy</button>
       <button  class="btn btn-outline-primary me-2 my-sm-0" type="button" [routerLink]="['/genres']">Gatunki</button>
   </div>
-    <span *ngIf="isLogged" class="p-2">Zalogowany użytkownik</span>
+    <span *ngIf="isLogged" class="p-2">{{email}}</span>
     
   </nav>
   <hr>

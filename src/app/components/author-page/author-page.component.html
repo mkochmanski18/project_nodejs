@@ -2,13 +2,7 @@
 <div class="card">
     <div class="card-header">
       <div>
-          <h3 class="card-title d-inline">"{{details.title}}"</h3>
-          <h5 class="card-text d-inline p-2">by 
-            <a 
-            class="link"
-            [routerLink]="['../../author/', details.authorId]">{{details.authorName}}</a></h5>
-          <p></p>
-          <h6 class="card-title">   Gatunek: {{details.genreName}}</h6>
+          <h3 class="card-title d-inline">"{{details.name}}"</h3>
       </div>
       <div>
           <!-- <app-star-rating [rating]=details.rating></app-star-rating> -->
@@ -19,7 +13,7 @@
           <img [src]="pictureUrl">
         </div>
         <div class="description">
-          {{details.description}}
+          {{details.biography}}
         </div>
       </div>
       <div class="file" *ngIf="isLogged">
@@ -39,11 +33,4 @@
 </div>
 <div *ngIf="error">
   {{error}}
-</div>
-<div class="card review">
-  <div class="card-header">Recenzje</div>
-  <div class="card-body" *ngFor="let review of reviews">
-      <app-recension-page-item [review]="review"></app-recension-page-item>
-  </div>
-  <div *ngIf="reviews.length===0" class="alert alert-warning">Brak recenzji</div>
 </div>

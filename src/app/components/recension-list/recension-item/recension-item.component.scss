@@ -1,5 +1,19 @@
-.more-line{
-    display:flex;
-    justify-content: right;
-    align-items: flex-end;
+.outercard{
+    min-width: 18rem;
+    width: fit-content;
+    .more-line{
+        display:flex;
+        justify-content: right;
+        align-items: flex-end;
+        margin-top: 10px;
+    }
+    .image {
+        display:flex;
+        justify-content: center;
+        width: 100%;
+        img{
+            height: 250px;
+            margin: 0 auto;
+        }
+    }
 }

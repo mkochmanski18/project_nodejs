@@ -56,8 +56,9 @@ export class GenreListComponent {
         },
         error:(err:{header:Object[],message:string,name:string, ok: boolean, status:number,statusText:string, url:string})=>{
           if(err.status==401){
-            this.authService.isLogged.next(false);
+            this.authService.logout();
             this.router.navigate(['../sign-in'],{relativeTo:this.route});
+            this.authService.isLogged.next(false);
           }
           else{
             this.error = 'Nieznany błąd serwera';

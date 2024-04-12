@@ -10,6 +10,7 @@ h2{
     width: 650px;
     margin: 0 auto;
     padding: 10px 0;
+    background-color: var(--bs-light);
     hr{
         width: 650px;
         margin: 10px auto;
@@ -25,6 +26,7 @@ h2{
                 width: fit-content;
                 button{
                     width:80px;
+                    height: 38px;
                 }
             }
             .text{
